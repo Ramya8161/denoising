@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload Image</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/000/543/740/small/180902_02_Abstract_medical_background_01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background covers the entire area */
+    background-position: center; /* Centers the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10;
+}
+
+/* Container */
+.container {
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    width: 500px;
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 50px;
+    color: #333;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 40px;
+}
+
+
+/* File input */
+input[type="file"] {
+    margin: 15px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+}
+
+/* Button */
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+    width: 100%;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Upload Image for Denoising</h2>
+
+    <form action="/process"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <input type="file"
+               name="image"
+               required>
+
+        <button type="submit">
+            Upload & Process
+        </button>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Results</title>
+</head>
+
+<body>
+
+<h2>Denoising Results</h2>
+
+<h3>Original</h3>
+<img src="{{ original }}" width="250">
+
+<h3>Wiener</h3>
+<img src="{{ url_for('static', filename=wiener) }}" width="250">
+
+<h3>BM3D</h3>
+<img src="{{ url_for('static', filename=bm3d) }}" width="250">
+
+<h3>AI Result</h3>
+<img src="{{ url_for('static', filename=ai) }}" width="250">
+
+</body>
+</html>

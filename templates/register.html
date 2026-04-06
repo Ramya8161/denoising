@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Register</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- 🐼 PANDA -->
+    <div class="panda" id="panda">
+        <div class="face">
+            <div class="ear left"><div class="inner-ear"></div></div>
+            <div class="ear right"><div class="inner-ear"></div></div>
+            <div class="eye-patch left"><div class="eye"></div></div>
+            <div class="eye-patch right"><div class="eye"></div></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+        </div>
+    </div>
+
+    <!-- ✅ REGISTER FORM -->
+    <form method="POST" action="{{ url_for('register') }}">
+
+        <input type="text" name="username" placeholder="Username" required>
+
+        <input type="email" name="email" placeholder="Email" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+        <button type="submit">REGISTER</button>
+
+    </form>
+
+    <div class="toggle-link">
+        <a href="{{ url_for('login') }}">Back to Login</a>
+    </div>
+
+</div>
+
+<script>
+const panda = document.getElementById("panda");
+const eyes = document.querySelectorAll(".eye");
+
+document.addEventListener("mousemove", (e) => {
+    eyes.forEach(eye => {
+        const rect = eye.getBoundingClientRect();
+        const angle = Math.atan2(
+            e.clientY - (rect.top + rect.height/2),
+            e.clientX - (rect.left + rect.width/2)
+        );
+        eye.style.transform = `translate(${Math.cos(angle)*6}px, ${Math.sin(angle)*6}px)`;
+    });
+});
+
+document.querySelectorAll("input[type='password']").forEach(input => {
+    input.addEventListener("focus", () => panda.classList.add("cover"));
+    input.addEventListener("blur", () => panda.classList.remove("cover"));
+});
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

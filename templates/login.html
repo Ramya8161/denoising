@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8" />
+<title>Login</title>
+
+<style>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- 🐼 PANDA (UNCHANGED) -->
+    <div class="panda" id="panda">
+        <div class="face">
+            <div class="ear left"><div class="inner-ear"></div></div>
+            <div class="ear right"><div class="inner-ear"></div></div>
+            <div class="eye-patch left"><div class="eye"></div></div>
+            <div class="eye-patch right"><div class="eye"></div></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+        </div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form method="POST" action="/login">
+
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <button type="submit">LOGIN</button>
+
+        <div class="toggle-link">
+            <a href="/register">Register New User</a>
+          
+        </div>
+
+    </form>
+</div>
+
+<script>
+/* KEEP SAME JS */
+const panda = document.getElementById("panda");
+const eyes = document.querySelectorAll(".eye");
+
+document.addEventListener("mousemove", (e) => {
+    eyes.forEach(eye => {
+        const rect = eye.getBoundingClientRect();
+        const angle = Math.atan2(
+            e.clientY - (rect.top + rect.height/2),
+            e.clientX - (rect.left + rect.width/2)
+        );
+        eye.style.transform = `translate(${Math.cos(angle)*6}px, ${Math.sin(angle)*6}px)`;
+    });
+});
+
+document.querySelectorAll("input[type='password']").forEach(input => {
+    input.addEventListener("focus", () => panda.classList.add("cover"));
+    input.addEventListener("blur", () => panda.classList.remove("cover"));
+});
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
